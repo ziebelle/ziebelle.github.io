@@ -5,10 +5,10 @@
 layout: home
 ---
 
-I’m a PhD Student at Humboldt-University supervised by Markus Reiß.
 
 ![Image](/images/me.jpg){: style="float: right" width="250" }
 
+I’m a PhD Student at Humboldt-University supervised by Markus Reiß.
 ### Projects and publications
 
 - [EarlyStopping python library](https://github.com/ESFIEP/EarlyStopping)
