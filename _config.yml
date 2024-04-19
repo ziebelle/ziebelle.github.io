@@ -28,9 +28,12 @@ github_username:  ziebelle
 linkedin_username: eric-ziebell-455574265
 
 # Build settings
-theme: minima
+
+# Removed minima theme as it is now a regular theme
+# theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
 
 # Exclude from processing.
 # The following items will not be processed, by default.
