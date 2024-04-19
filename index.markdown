@@ -11,5 +11,5 @@ layout: home
 I’m a PhD Student at Humboldt-University supervised by Markus Reiß.
 ### Projects and publications
 
-- [EarlyStopping python library](https://github.com/ESFIEP/EarlyStopping)
+- [EarlyStopping python library](https://github.com/ESFIEP/EarlyStopping) ([Docs](https://esfiep.github.io/EarlyStopping/))
 - [Espanso LaTeX snippets](https://github.com/ziebelle/EspansoMathSnippets)
