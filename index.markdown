@@ -5,17 +5,15 @@
 layout: home
 ---
 
-
-![Image](/images/me.jpg){: style="float: right" width="300" }
-
+<!-- ![Image](/images/me.jpg){: style="float: right" width="300" }-->
 
 <div style="width: 600px;">
-I'm a PhD student at Humboldt-University in Berlin specialising in mathematical statistics. My interests span non-parametric statistics, stochastic partial differential equations, functional analysis, PDEs, and early stopping techniques for iterative estimation procedures in machine learning.
+I'm a PhD student at Humboldt-University in Berlin, specialising in mathematical statistics. My interests span non-parametric statistics, stochastic partial differential equations, functional analysis, PDEs, and early stopping techniques for iterative estimation procedures in machine learning.
 </div>
-
 
 <p> </p>
 ### Projects and publications
+- [Parameter estimation in hyperbolic linear SPDEs from multiple measurements](https://arxiv.org/abs/2407.13461)
 - [Non-parametric estimation for the stochastic wave equation](https://arxiv.org/abs/2404.18823)
 - [EarlyStopping python library](https://github.com/ESFIEP/EarlyStopping) ([Docs](https://earlystop.github.io/EarlyStopping/)) ([Repo](https://github.com/EarlyStop/EarlyStopping))
 - [SPDE-Gallery](https://hu.berlin/SPDE-Gallery)
