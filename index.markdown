@@ -7,9 +7,8 @@ layout: home
 
 <!-- ![Image](/images/me.jpg){: style="float: right" width="300" }-->
 
-<div style="width: 600px;">
+
 I'm a PhD student at Humboldt-University in Berlin, specialising in mathematical statistics. My interests span non-parametric statistics, stochastic partial differential equations, functional analysis, PDEs, and early stopping techniques for iterative estimation procedures in machine learning.
-</div>
 
 <p> </p>
 ### Projects and publications
