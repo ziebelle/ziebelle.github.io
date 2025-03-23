@@ -9,6 +9,9 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
     title: 'Eric Ziebell | Academic Research',
     description: 'Academic research and projects in stochastic partial differential equations and mathematical modeling.',
+    verification: {
+        google: 'yf_ZcOcGUO98i04oEt0vnhBIzPM3EctR3lRdlOrJ-Y4',
+    },
 };
 
 export default function RootLayout({
