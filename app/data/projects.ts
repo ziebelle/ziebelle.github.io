@@ -24,7 +24,7 @@ export const allProjects: Project[] = [
         id: 2,
         title: 'Non-parametric estimation for the stochastic wave equation',
         description: 'Academic research on non-parametric estimation techniques applied to stochastic wave equations.',
-        image: '/images/non_para_wave.png',
+        image: '/images/seperated_halfspaces_cut.png',
         tags: ['Research', 'Stochastic Wave Equation', 'Non-parametric Estimation'],
         link: 'https://arxiv.org/abs/2404.18823',
         featured: true,
