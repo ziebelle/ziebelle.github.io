@@ -1,9 +1,6 @@
 name: Deploy to GitHub Pages
 
-on:
-  push:
-    branches:
-      - v2  # Changed from main to v2 to match your active branch
+on: [workflow_dispatch]
 
 jobs:
   build-and-deploy:
