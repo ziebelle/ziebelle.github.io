@@ -18,7 +18,7 @@ export default function Home() {
                                 Eric Ziebell
                             </h1>
                             <p className="text-lg mb-8 max-w-3xl mx-auto">
-                                I specialize in stochastic partial differential equations, mathematical modeling, and developing tools for scientific computing.
+                                I specialise in mathematical statistics, statistics for stochastic partial differential equations, and early stopping for iterative learning procedures.
                             </p>
                             <div className="flex space-x-4 justify-center">
                                 <Link href="/projects" className="btn-primary">
@@ -36,7 +36,7 @@ export default function Home() {
                     <div className="text-center mb-12">
                         <h2 className="text-3xl font-bold mb-4">Research and Projects</h2>
                         <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                            Recent research papers and open-source contributions in mathematics and scientific computing.
+                            Recent research papers and open-source contributions.
                         </p>
                     </div>
 
