@@ -37,7 +37,7 @@ const Footer = () => {
                             <a href="https://github.com/ziebelle" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary">
                                 GitHub
                             </a>
-                            <a href="https://orcid.org/0000-0000-0000-0000" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary">
+                            <a href="https://orcid.org/0009-0002-2065-3028" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary">
                                 ORCID
                             </a>
                         </div>
