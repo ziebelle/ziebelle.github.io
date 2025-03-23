@@ -18,7 +18,7 @@ export default function Home() {
                                 Eric Ziebell
                             </h1>
                             <p className="text-lg mb-8 max-w-3xl mx-auto">
-                                I specialise in mathematical statistics, statistics for stochastic partial differential equations, and early stopping for iterative learning procedures.
+                                I specialize in mathematical statistics, statistics for stochastic partial differential equations, and early stopping for iterative learning procedures.
                             </p>
                             <div className="flex space-x-4 justify-center">
                                 <Link href="/projects" className="btn-primary">
