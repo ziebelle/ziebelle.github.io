@@ -11,11 +11,24 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
     const [imageError, setImageError] = useState(false);
+    const isVideo = project.image.endsWith('.mp4');
+    const isGif = project.image.endsWith('.gif');
 
     return (
         <div className="bg-white dark:bg-dark rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
             <div className="relative h-52 bg-gray-200 dark:bg-gray-700 p-2">
-                {!imageError ? (
+                {isVideo ? (
+                    <video
+                        className="w-full h-full object-contain rounded-md"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                    >
+                        <source src={project.image} type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                ) : !imageError ? (
                     <Image
                         src={project.image}
                         alt={project.title}
@@ -23,7 +36,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="object-contain rounded-md"
                         onError={() => setImageError(true)}
-                        unoptimized={project.image.endsWith('.gif')}
+                        unoptimized={isGif}
                     />
                 ) : (
                     <div className="absolute inset-0 flex items-center justify-center p-4">
