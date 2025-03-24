@@ -51,7 +51,9 @@ export const allProjects: Project[] = [
         description: 'A collection of visualizations and simulations for Stochastic Partial Differential Equations.',
         image: '/images/gallery_1.png',
         tags: ['SPDEs', 'Visualization', 'Educational', 'Mathematics'],
-        links: [{ title: 'View Gallery', url: 'https://hu.berlin/SPDE-Gallery' }],
+        links: [{ title: 'View Poster', url: 'https://hu.berlin/SPDE-Gallery' },
+        { title: 'View Gallery', url: 'https://ziebelle.github.io/SPDE-Gallery/' }
+        ],
     },
     {
         id: 5,
