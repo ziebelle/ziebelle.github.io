@@ -35,8 +35,7 @@ const Footer = () => {
                     <div>
                         <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Research Interests</h2>
                         <p className="text-gray-600 dark:text-gray-400">
-                            My research focuses on stochastic partial differential equations, parameter estimation methods,
-                            and the development of computational tools for mathematical analysis.
+                            Mathematical Statistics, Statistics for SPDEs, Early Stopping, Functional Analysis, Minimax Lowerbounds
                         </p>
                         <div className="mt-4 space-x-4">
                             <a href="https://github.com/ziebelle" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary">
