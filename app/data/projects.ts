@@ -40,7 +40,8 @@ export const allProjects: Project[] = [
         tags: ['Python', 'Machine Learning', 'Open Source', 'Library', 'Early Stopping'],
         links: [
             { title: 'GitHub', url: 'https://github.com/ESFIEP/EarlyStopping' },
-            { title: 'Documentation', url: 'https://earlystop.github.io/EarlyStopping/' }
+            { title: 'Documentation', url: 'https://earlystop.github.io/EarlyStopping/' },
+            { title: 'View Paper', url: 'https://arxiv.org/abs/2503.16753' }
         ],
         featured: true,
     },
