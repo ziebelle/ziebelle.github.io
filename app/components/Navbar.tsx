@@ -28,6 +28,9 @@ const Navbar = () => {
                         <Link href="/projects" className="text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-primary">
                             Projects
                         </Link>
+                        <Link href="/contact" className="text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-primary">
+                            Contact
+                        </Link>
                     </div>
 
                     {/* Mobile Navigation Button */}
@@ -60,6 +63,9 @@ const Navbar = () => {
                         </Link>
                         <Link href="/projects" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50 dark:text-gray-300 dark:hover:text-primary dark:hover:bg-gray-800">
                             Projects
+                        </Link>
+                        <Link href="/contact" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50 dark:text-gray-300 dark:hover:text-primary dark:hover:bg-gray-800">
+                            Contact
                         </Link>
                     </div>
                 </div>
