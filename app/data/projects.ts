@@ -5,7 +5,10 @@ export interface Project {
     description: string;
     image: string;
     tags: string[];
-    link: string;
+    links: {
+        title: string;
+        url: string;
+    }[];
     featured?: boolean; // Whether this project should be featured on the homepage
 }
 
@@ -17,7 +20,7 @@ export const allProjects: Project[] = [
         description: 'Research paper on parameter estimation methods for hyperbolic linear SPDEs using multiple measurements.',
         image: '/images/plate_equation.png',
         tags: ['Research', 'SPDEs', 'Parameter Estimation', 'Hyperbolic Equations', 'M, N-Functions'],
-        link: 'https://arxiv.org/abs/2407.13461',
+        links: [{ title: 'View Paper', url: 'https://arxiv.org/abs/2407.13461' }],
         featured: true,
     },
     {
@@ -26,7 +29,7 @@ export const allProjects: Project[] = [
         description: 'Academic research on non-parametric estimation techniques applied to stochastic wave equations.',
         image: '/images/RiemannLebesgue.mp4',
         tags: ['Research', 'Stochastic Wave Equation', 'Non-parametric Estimation', 'Equipartition of Energy', 'Riemann-Lebesgue operators'],
-        link: 'https://arxiv.org/abs/2404.18823',
+        links: [{ title: 'View Paper', url: 'https://arxiv.org/abs/2404.18823' }],
         featured: true,
     },
     {
@@ -35,7 +38,10 @@ export const allProjects: Project[] = [
         description: 'A Python library providing tools for early stopping techniques in machine learning and optimization algorithms.',
         image: '/images/tree_heatmaps.gif',
         tags: ['Python', 'Machine Learning', 'Open Source', 'Library', 'Early Stopping'],
-        link: 'https://github.com/ESFIEP/EarlyStopping',
+        links: [
+            { title: 'GitHub', url: 'https://github.com/ESFIEP/EarlyStopping' },
+            { title: 'Documentation', url: 'https://earlystop.github.io/EarlyStopping/' }
+        ],
         featured: true,
     },
     {
@@ -44,7 +50,7 @@ export const allProjects: Project[] = [
         description: 'A collection of visualizations and simulations for Stochastic Partial Differential Equations.',
         image: '/images/gallery_1.png',
         tags: ['SPDEs', 'Visualization', 'Educational', 'Mathematics'],
-        link: 'https://hu.berlin/SPDE-Gallery',
+        links: [{ title: 'View Gallery', url: 'https://hu.berlin/SPDE-Gallery' }],
     },
     {
         id: 5,
@@ -52,7 +58,7 @@ export const allProjects: Project[] = [
         description: 'A collection of LaTeX snippets for the Espanso text expander, enhancing LaTeX writing productivity.',
         image: '/images/espanso_snippets.png',
         tags: ['LaTeX', 'Espanso', 'Productivity', 'Tool'],
-        link: 'https://github.com/ziebelle/EspansoMathSnippets',
+        links: [{ title: 'View Project', url: 'https://github.com/ziebelle/EspansoMathSnippets' }],
     },
     {
         id: 6,
@@ -60,7 +66,7 @@ export const allProjects: Project[] = [
         description: 'Generative modeling of sea surface temperature using normalizing flows.',
         image: '/images/marginals.png',
         tags: ['Machine Learning', 'Normalizing Flows', 'Climate Science', 'Generative Models'],
-        link: 'https://medium.com/@starokon/generative-modelling-of-sea-surface-temperature-with-normalizing-flows-cdafa3d90b56',
+        links: [{ title: 'Read Article', url: 'https://medium.com/@starokon/generative-modelling-of-sea-surface-temperature-with-normalizing-flows-cdafa3d90b56' }],
     },
 ];
 

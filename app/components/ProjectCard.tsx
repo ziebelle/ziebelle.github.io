@@ -59,28 +59,33 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                     ))}
                 </div>
 
-                <Link
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:text-primary-dark font-medium inline-flex items-center"
-                >
-                    View Project
-                    <svg
-                        className="w-4 h-4 ml-1"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M14 5l7 7m0 0l-7 7m7-7H3"
-                        />
-                    </svg>
-                </Link>
+                <div className="flex flex-wrap gap-4">
+                    {project.links.map((link, index) => (
+                        <Link
+                            key={index}
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-primary hover:text-primary-dark font-medium inline-flex items-center"
+                        >
+                            {link.title}
+                            <svg
+                                className="w-4 h-4 ml-1"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                                />
+                            </svg>
+                        </Link>
+                    ))}
+                </div>
             </div>
         </div>
     );
