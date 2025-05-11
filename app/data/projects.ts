@@ -78,15 +78,16 @@ export const allProjects: Project[] = [
         image: '/images/nuxt_code.png',
         tags: ['React', 'Vue', 'Web Development'],
         links: [{ title: 'learning-vue', url: 'https://ziebelle.github.io/learning-vue/' }],
-    },
-    {
-        id: 8,
-        title: 'Math learning projects',
-        description: 'Latex writedowns',
-        image: '/images/question.png',
-        tags: ['Minimax lowerbounds', 'Mathematics', 'Research'],
-        links: [{ title: 'Minimax lowerbounds', url: 'https://github.com/ziebelle/Minimax-lowerbounds' }],
     }
+    // },
+    // {
+    //     id: 8,
+    //     title: 'Math learning projects',
+    //     description: 'Latex writedowns',
+    //     image: '/images/question.png',
+    //     tags: ['Minimax lowerbounds', 'Mathematics', 'Research'],
+    //     links: [{ title: 'Minimax lowerbounds', url: 'https://github.com/ziebelle/Minimax-lowerbounds' }],
+    // }
 ];
 
 // Helper function to get featured projects
