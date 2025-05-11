@@ -71,14 +71,14 @@ export const allProjects: Project[] = [
         tags: ['Machine Learning', 'Normalizing Flows', 'Climate Science', 'Generative Models'],
         links: [{ title: 'Read Article', url: 'https://medium.com/@starokon/generative-modelling-of-sea-surface-temperature-with-normalizing-flows-cdafa3d90b56' }],
     },
-    {
-        id: 7,
-        title: 'Learning web development',
-        description: 'Learning web developement with React and vue',
-        image: '/images/nuxt_code.png',
-        tags: ['React', 'Vue', 'Web Development'],
-        links: [{ title: 'learning-vue', url: 'https://ziebelle.github.io/learning-vue/' }],
-    }
+    // {
+    //     id: 7,
+    //     title: 'Learning web development',
+    //     description: 'Learning web developement with React and vue',
+    //     image: '/images/nuxt_code.png',
+    //     tags: ['React', 'Vue', 'Web Development'],
+    //     links: [{ title: 'learning-vue', url: 'https://ziebelle.github.io/learning-vue/' }],
+    // }
     // },
     // {
     //     id: 8,
