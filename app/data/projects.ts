@@ -83,7 +83,7 @@ export const allProjects: Project[] = [
     {
         id: 7,
         title: 'Math learning projects',
-        description: 'Obsiian vault',
+        description: 'Obsidian vault',
         image: '/images/question.png',
         tags: ['Mathematics', 'Research'],
         links: [{ title: 'Obsidian Wiki', url: 'https://publish.obsidian.md/ziebelle' }],
