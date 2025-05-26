@@ -80,14 +80,14 @@ export const allProjects: Project[] = [
     //     links: [{ title: 'learning-vue', url: 'https://ziebelle.github.io/learning-vue/' }],
     // }
     // },
-    {
-        id: 7,
-        title: 'Math learning projects',
-        description: 'Obsidian vault',
-        image: '/images/question.png',
-        tags: ['Mathematics', 'Research'],
-        links: [{ title: 'Obsidian Wiki', url: 'https://publish.obsidian.md/ziebelle' }],
-    }
+    // {
+    //     id: 7,
+    //     title: 'Math learning projects',
+    //     description: 'Obsidian vault',
+    //     image: '/images/question.png',
+    //     tags: ['Mathematics', 'Research'],
+    //     links: [{ title: 'Obsidian Wiki', url: 'https://publish.obsidian.md/ziebelle' }],
+    // }
 ];
 
 // Helper function to get featured projects
