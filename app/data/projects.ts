@@ -68,6 +68,7 @@ export const allProjects: Project[] = [
             { title: 'View Poster 2', url: 'https://www.mathematik.hu-berlin.de/de/forschung/forschungsgebiete/stochastik/stoch-employees/mreiss/publications/spdegallery2.pdf' },
             { title: 'View Gallery', url: 'https://ziebelle.github.io/SPDE-Gallery/' }
         ],
+        featured: true,
     },
     {
         id: 6,
