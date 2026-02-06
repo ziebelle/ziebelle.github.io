@@ -41,7 +41,10 @@ export const allProjects: Project[] = [
         description: 'Academic research on non-parametric estimation techniques applied to stochastic wave equations.',
         image: '/images/RiemannLebesgue.mp4',
         tags: ['Research', 'Stochastic Wave Equation', 'Non-parametric Estimation', 'Equipartition of Energy', 'Riemann-Lebesgue operators'],
-        links: [{ title: 'ArXiv', url: 'https://arxiv.org/abs/2404.18823' }],
+        links: [
+            { title: 'ArXiv', url: 'https://arxiv.org/abs/2404.18823' },
+            { title: 'Published Version', url: 'https://projecteuclid.org/journals/electronic-journal-of-statistics/volume-20/issue-1/Non-parametric-estimation-for-the-stochastic-wave-equation/10.1214/26-EJS2491.full' }
+        ],
         featured: true,
     },
     {
