@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eric Ziebell</title>
+    <meta name="description" content="Personal website of Eric Ziebell — research, software, and selected projects." />
+    <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="#top" aria-label="Go to top">
+                <!-- <span class="brand-mark">EZ</span> -->
+                <span>Eric Ziebell</span>
+            </a>
+            <nav class="nav-links" aria-label="Main navigation">
+                <a href="#about">About</a>
+                <a href="#featured">Featured</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">Theme</button>
+            </nav>
+        </div>
+    </header>
+
+    <main id="top">
+        <section class="intro">
+            <div class="container">
+                <div class="intro-card">
+                    <!-- <p class="intro-eyebrow">Research · Mathematics · Software</p> -->
+                    <h1>Eric Ziebell</h1>
+                    <p class="intro-copy">
+                        Hi im Eric! This site is an overview of all of my public projects.
+                        I am a researcher in mathematics at Humboldt-Universität zu Berlin and specialise on
+                        mathematical statistics. Currently I am quite interested in statistics for stochastic partial
+                        differential equations, early stopping and minimax lowerbounds.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="featured">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <h2>Featured work</h2>
+                        <!-- <p>A few projects that best represent the mix of research, software, and exposition on this
+                            site.</p> -->
+                    </div>
+                </div>
+                <div class="projects-grid" id="featuredProjects"></div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <h2>Projects</h2>
+                        <p>All selected projects, papers, and tools. Use the topic filters to narrow the list.</p>
+                    </div>
+                </div>
+                <div class="project-toolbar">
+                    <div class="filter-row" id="tagFilters" aria-label="Project tag filters"></div>
+                </div>
+                <div class="projects-grid" id="allProjects"></div>
+            </div>
+        </section>
+
+        <section class="footer" id="contact">
+            <div class="container">
+                <div class="footer-card">
+                    <div>
+                        <h2 class="footer-title">Contact</h2>
+                        <p>
+                            Humboldt-Universität zu Berlin, Department of Mathematics, Unter den Linden 6, 10099 Berlin,
+                            Germany (ziebelle ??? hu-berlin.de)
+                        </p>
+                    </div>
+                    <div class="small-links">
+                        <a href="https://github.com/ziebelle" target="_blank" rel="noreferrer">GitHub</a>
+                        <a href="#top">Back to top</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="assets/js/site.js"></script>
+</body>
+
+</html>
