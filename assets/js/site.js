@@ -120,14 +120,17 @@ function createMediaElement(project) {
     img.src = src;
     img.alt = `Preview image for ${project.title}`;
     img.loading = "lazy";
+
     img.addEventListener("error", () => {
         wrapper.innerHTML = "";
+
         if (project.featured) {
             const badge = document.createElement("span");
             badge.className = "featured-badge";
             badge.textContent = "Featured";
             wrapper.appendChild(badge);
         }
+
         const fallback = document.createElement("div");
         fallback.className = "media-fallback";
         fallback.textContent = project.title;
@@ -154,6 +157,7 @@ function createProjectCard(project) {
 
     const tagRow = document.createElement("div");
     tagRow.className = "tag-row";
+
     project.tags.forEach((tagText) => {
         const tag = document.createElement("span");
         tag.className = "tag";
@@ -163,6 +167,7 @@ function createProjectCard(project) {
 
     const linkRow = document.createElement("div");
     linkRow.className = "link-row";
+
     project.links.forEach((linkData) => {
         const link = document.createElement("a");
         link.className = "project-link";
@@ -185,6 +190,8 @@ function createProjectCard(project) {
 }
 
 function renderProjects() {
+    if (!featuredProjectsElement || !allProjectsElement) return;
+
     const featured = projects.filter((project) => project.featured);
     const filtered = activeTag === "All"
         ? projects
@@ -203,45 +210,61 @@ function renderProjects() {
 }
 
 function renderFilters() {
+    if (!tagFiltersElement) return;
+
     const filters = ["All", ...uniqueTags];
     const buttons = filters.map((tag) => {
         const button = document.createElement("button");
         button.type = "button";
         button.className = "filter-button";
         button.textContent = tag;
-        if (tag === activeTag) button.classList.add("is-active");
+
+        if (tag === activeTag) {
+            button.classList.add("is-active");
+        }
+
         button.addEventListener("click", () => {
             activeTag = tag;
             renderFilters();
             renderProjects();
         });
+
         return button;
     });
 
     tagFiltersElement.replaceChildren(...buttons);
 }
 
-function applyStoredTheme() {
-    const stored = localStorage.getItem("theme");
-    if (stored === "dark" || stored === "light") {
-        document.body.dataset.theme = stored;
-    }
-    updateThemeButtonLabel();
-}
-
 function updateThemeButtonLabel() {
+    if (!themeToggle) return;
+
     const isDark = document.body.dataset.theme === "dark";
     themeToggle.textContent = isDark ? "Light mode" : "Dark mode";
     themeToggle.setAttribute("aria-pressed", String(isDark));
 }
 
-themeToggle.addEventListener("click", () => {
-    const nextTheme = document.body.dataset.theme === "dark" ? "light" : "dark";
-    document.body.dataset.theme = nextTheme;
-    localStorage.setItem("theme", nextTheme);
+function applyStoredTheme() {
+    const stored = localStorage.getItem("theme");
+
+    if (stored === "dark" || stored === "light") {
+        document.body.dataset.theme = stored;
+    }
+
     updateThemeButtonLabel();
-});
+}
+
+if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+        const nextTheme = document.body.dataset.theme === "dark" ? "light" : "dark";
+        document.body.dataset.theme = nextTheme;
+        localStorage.setItem("theme", nextTheme);
+        updateThemeButtonLabel();
+    });
+}
 
 applyStoredTheme();
-renderFilters();
-renderProjects();
+
+if (featuredProjectsElement && allProjectsElement && tagFiltersElement) {
+    renderFilters();
+    renderProjects();
+}
