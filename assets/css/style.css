@@ -583,3 +583,13 @@ section {
     color: var(--text-muted);
     font-size: 0.92rem;
 }
+
+.blog-post video {
+    width: 100%;
+    max-width: 800px;
+    display: block;
+    margin: 1.5rem auto;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
