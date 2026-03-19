@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Riemann-Lebesgue | Eric Ziebell</title>
+    <title>Notes on the Riemann-Lebesgue lemma | Eric Ziebell</title>
     <meta name="description" content="Understanding the Riemann-Lebesgue lemma" />
     <link rel="stylesheet" href="../assets/css/style.css" />
 
@@ -43,7 +43,7 @@
             <div class="container">
                 <div class="intro-card">
                     <p class="post-meta">March 2026 · Mathematics · Exposition</p>
-                    <h1>The Riemann-Lebesgue lemma</h1>
+                    <h1>Notes on the Riemann-Lebesgue lemma</h1>
                 </div>
             </div>
         </section>
@@ -62,6 +62,7 @@
                         \mathbb{K})
                         \rightarrow C_0(\mathbb{R}^{d}, \mathbb{K})$.
                     </p>
+
                     <p>
                         While the rate of decay is arbitrarily slow in
                         general [1], the convergence is faster if one assumes additional smoothness on the function
@@ -72,38 +73,43 @@
                             <source src="videos/RL.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
-                        If the trigonometric function $f$ is integrated against is positive, the limit of the integral
-                        cannot be zero anymore, leading to several nice generalisations of the Riemann-Lebesgue lemma
-                        which can be found in [3]. Suppose that $f \in L^{1}(\mathbb{R})$ and $\beta \in L^\infty
-                        (\mathbb{R})$ is symmetric. Then, we have
-                        $$
-                        \lim_{\lambda \rightarrow \infty} \int_{\mathbb{R}}f(x)\beta(\lambda x) \mathrm{d}x =
-                        \left(\int_{\mathbb{R}}f(x)\mathrm{d}x \right)\left(\lim_{T \rightarrow \infty} \frac{1}{T}
-                        \int_{0}^{T} \beta(x)
-                        \mathrm{d}x\right),
-                        $$
-                        provided that the latter mean value of the function exists. For a generalisation of this result
-                        to arbitrary dimensions see [3, Theorem 4].
-                        <video controls playsinline width="100%">
-                            <source src="videos/RL2.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        If the function $\beta$ is not symmetric, as in the next animation, one can define
-                        $\beta_{\pm}(x)=\beta(\pm x)$ when $x \geq 0$, resulting in the convergence
-                        $$
-                        \begin{align}
-                        & \lim_{\lambda \rightarrow \infty} \int_{\mathbb{R}}f(x)\beta(\lambda x) \mathrm{d}x \\
-                        & =
-                        \left(\int_{0}^{\infty}f(x)\mathrm{d}x \right)\left(\lim_{T \rightarrow \infty} \frac{1}{T}
-                        \int_{0}^{T} \beta_{+}(x) \mathrm{d}x \right) + \left(\int_{-\infty}^{0}f(x)\mathrm{d}x
-                        \right)\left(\lim_{T \rightarrow \infty} \frac{1}{T}
-                        \int_{0}^{T} \beta_{-}(x) \mathrm{d}x \right).
-                        \end{align}
-                        $$
-                        <video controls playsinline width="100%">
-                            <source src="videos/RL_double.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                    <h3>Limits for arbitrary bounded functions</h3>
+                    If the trigonometric function $f$ is integrated against is positive, the limit of the integral
+                    cannot be zero anymore. However, several nice generalisations of the Riemann-Lebesgue lemma,
+                    which can be found in [3], may still be applicable. Suppose that $f \in L^{1}(\mathbb{R})$ and
+                    $\beta \in L^\infty
+                    (\mathbb{R})$ is symmetric. Then, we have
+                    $$
+                    \lim_{\lambda \rightarrow \infty} \int_{\mathbb{R}}f(x)\beta(\lambda x) \mathrm{d}x =
+                    \left(\int_{\mathbb{R}}f(x)\mathrm{d}x \right)\left(\lim_{T \rightarrow \infty} \frac{1}{T}
+                    \int_{0}^{T} \beta(x)
+                    \mathrm{d}x\right),
+                    $$
+                    provided that the latter mean value of the function exists. For a generalisation of this result
+                    to arbitrary dimensions see [3, Theorem 4].
+                    <video controls playsinline width="100%">
+                        <source src="videos/RL2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    If the function $\beta$ is not symmetric, as in the next animation, one can define
+                    $\beta_{\pm}(x)=\beta(\pm x)$ when $x \geq 0$, resulting in the convergence
+                    $$
+                    \begin{align}
+                    & \lim_{\lambda \rightarrow \infty} \int_{\mathbb{R}}f(x)\beta(\lambda x) \mathrm{d}x \\
+                    & =
+                    \left(\int_{0}^{\infty}f(x)\mathrm{d}x \right)\left(\lim_{T \rightarrow \infty} \frac{1}{T}
+                    \int_{0}^{T} \beta_{+}(x) \mathrm{d}x \right) + \left(\int_{-\infty}^{0}f(x)\mathrm{d}x
+                    \right)\left(\lim_{T \rightarrow \infty} \frac{1}{T}
+                    \int_{0}^{T} \beta_{-}(x) \mathrm{d}x \right).
+                    \end{align}
+                    $$
+                    <video controls playsinline width="100%">
+                        <source src="videos/RL_double.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    Remember that $(L^{1}(\mathbb{R}))^{*} \equiv L^{\infty}(\mathbb{R})$. Thus, we can interpret
+                    $\beta(\lambda \cdot)$ as an element of the dual space, which converges in weak* to the element
+                    $m_{+}\mathbf{1}_{(0,\infty)}+m_{-}\mathbf{1}_{(-\infty,0)}$ as $\lambda \rightarrow \infty$.
                     </p>
                     <h1>References</h1>
                     <p>
