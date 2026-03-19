@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>A first note on stochastic wave equations | Eric Ziebell</title>
+    <title>Riemann-Lebesgue | Eric Ziebell</title>
     <meta name="description" content="Understanding the Riemann-Lebesgue lemma" />
     <link rel="stylesheet" href="../assets/css/style.css" />
 
@@ -31,7 +31,7 @@
             <nav class="nav-links" aria-label="Main navigation">
                 <a href="../index.html#featured">Featured</a>
                 <a href="../index.html#projects">Projects</a>
-                <a href="index.html">Blog</a>
+                <a href="index.html">Notes</a>
                 <a href="../index.html#contact">Contact</a>
                 <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">Theme</button>
             </nav>
@@ -43,7 +43,7 @@
             <div class="container">
                 <div class="intro-card">
                     <p class="post-meta">March 2026 · Mathematics · Exposition</p>
-                    <h1>Understanding the Riemann-Lebesgue lemma</h1>
+                    <h1>The Riemann-Lebesgue lemma</h1>
                 </div>
             </div>
         </section>
@@ -52,22 +52,79 @@
             <div class="container">
                 <article class="blog-post">
                     <p>
+                        The Riemann-Lebesgue lemma states that the Fourier transform of an integrable function vanishes
+                        at infinity, i.e. $|\mathcal{F}[f](x)| \rightarrow 0$, for $x \rightarrow \pm\infty$, with
+                        $$
+                        \mathcal{F}[f](x) := \int_{\mathbb{R}}f(w)e^{ixw} \mathrm{d}w, \quad f \in
+                        L^{1}(\mathbb{R}).
+                        $$
+                        In fact, the Fourier transform is a bounded linear operator $\mathcal{F}:L^{1}(\mathbb{R}^{d},
+                        \mathbb{K})
+                        \rightarrow C_0(\mathbb{R}^{d}, \mathbb{K})$.
+                    </p>
+                    <p>
+                        While the rate of decay is arbitrarily slow in
+                        general [1], the convergence is faster if one assumes additional smoothness on the function
+                        $f$, see for instance [2, Table 3.1]. Clearly the same is true for the sine and cosine
+                        transforms of a function. The following figure illustrates the
+                        asymptotic cancellation of the positive and negative contributions.
                         <video controls playsinline width="100%">
                             <source src="videos/RL.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
-
-                        <video controls playsinline width="100%">
-                            <source src="videos/RL_double.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-
+                        If the trigonometric function $f$ is integrated against is positive, the limit of the integral
+                        cannot be zero anymore, leading to several nice generalisations of the Riemann-Lebesgue lemma
+                        which can be found in [3]. Suppose that $f \in L^{1}(\mathbb{R})$ and $\beta \in L^\infty
+                        (\mathbb{R})$ is symmetric. Then, we have
+                        $$
+                        \lim_{\lambda \rightarrow \infty} \int_{\mathbb{R}}f(x)\beta(\lambda x) \mathrm{d}x =
+                        \left(\int_{\mathbb{R}}f(x)\mathrm{d}x \right)\left(\lim_{T \rightarrow \infty} \frac{1}{T}
+                        \int_{0}^{T} \beta(x)
+                        \mathrm{d}x\right),
+                        $$
+                        provided that the latter mean value of the function exists. For a generalisation of this result
+                        to arbitrary dimensions see [3, Theorem 4].
                         <video controls playsinline width="100%">
                             <source src="videos/RL2.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
+                        If the function $\beta$ is not symmetric, as in the next animation, one can define
+                        $\beta_{\pm}(x)=\beta(\pm x)$ when $x \geq 0$, resulting in the convergence
+                        $$
+                        \begin{align}
+                        & \lim_{\lambda \rightarrow \infty} \int_{\mathbb{R}}f(x)\beta(\lambda x) \mathrm{d}x \\
+                        & =
+                        \left(\int_{0}^{\infty}f(x)\mathrm{d}x \right)\left(\lim_{T \rightarrow \infty} \frac{1}{T}
+                        \int_{0}^{T} \beta_{+}(x) \mathrm{d}x \right) + \left(\int_{-\infty}^{0}f(x)\mathrm{d}x
+                        \right)\left(\lim_{T \rightarrow \infty} \frac{1}{T}
+                        \int_{0}^{T} \beta_{-}(x) \mathrm{d}x \right).
+                        \end{align}
+                        $$
+                        <video controls playsinline width="100%">
+                            <source src="videos/RL_double.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
                     </p>
-                    <a href="index.html">← Back to the blog overview</a>
+                    <h1>References</h1>
+                    <p>
+                        The annimations were maid using <a href="https://www.manim.community/"> Manim</a>.
+                    </p>
+                    <p>
+                        [1] Boche, Holger, and Ezra Tampubolon. "On the decay—and the smoothness behavior of the Fourier
+                        transform, and the construction of signals having strong divergent Shannon sampling series."
+                        2016
+                        IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP). IEEE, 2016.
+                    </p>
+                    <p>
+                        [2] Grafakos, Loukas. Classical fourier analysis. Vol. 2. New York: Springer, 2008.
+                    </p>
+                    <p>
+                        [3] Kahane, Charles S. "Generalizations of the riemann-lebesgue and cantor-lebesgue lemmas."
+                        Czechoslovak Mathematical Journal 30.1 (1980): 108-117.
+                    </p>
+
+                    </p>
+                    <a href="index.html">← Back to the overview</a>
                     </p>
                 </article>
             </div>

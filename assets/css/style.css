@@ -70,6 +70,7 @@ a {
 .container {
     width: min(calc(100% - 2rem), var(--content-width));
     margin: 0 auto;
+    text-align: justify;
 }
 
 .site-header {
