@@ -204,7 +204,7 @@ section {
 .section-heading p {
     margin: 0.4rem 0 0;
     color: var(--text-muted);
-    max-width: 58ch;
+    max-width: 200ch;
 }
 
 .section-card {
@@ -594,3 +594,137 @@ section {
     border: 1px solid var(--border);
     box-shadow: var(--shadow);
 }
+
+
+.theorem,
+.lemma,
+.proof {
+    margin: 1.4rem 0;
+    padding: 1rem 1.15rem;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background: var(--bg-elevated);
+}
+
+.theorem {
+    border-left: 4px solid var(--primary);
+}
+
+.lemma {
+    border-left: 4px solid var(--secondary);
+}
+
+/* .proof {
+    margin: 1.4rem 0;
+    padding: 1rem 1.15rem;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background: var(--bg-elevated);
+    border-left: 4px solid var(--text-muted);
+} */
+
+.theorem-title {
+    font-weight: 700;
+    font-style: bold;
+    margin-bottom: 0.8rem;
+}
+
+.proof-title {
+    font-weight: 700;
+    font-style: italic;
+    margin-bottom: 0.8rem;
+}
+
+.proof {
+    margin: 1.4rem 0;
+}
+
+.proof p {
+    margin: 0.9rem 0;
+}
+
+.proof-heading {
+    font-weight: 700;
+}
+
+.proof-step {
+    font-weight: 600;
+}
+
+.qed-line {
+    text-align: right;
+    margin-top: 0.6rem;
+}
+
+.qed-symbol {
+    font-size: 1.05rem;
+}
+
+/* 
+.proof-steps {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    counter-reset: proof-step;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.proof-steps li {
+    counter-increment: proof-step;
+    position: relative;
+    padding: 0.9rem 1rem 0.9rem 3.4rem;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--bg-elevated-strong);
+}
+
+.proof-steps li::before {
+    content: counter(proof-step);
+    position: absolute;
+    left: 1rem;
+    top: 0.9rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    background: var(--primary-soft);
+    color: var(--primary);
+}
+
+.proof-steps p {
+    margin: 0.35rem 0;
+} */
+
+/* Usage
+<div class="theorem">
+    <div class="theorem-title">Theorem 1.</div>
+    <p>
+        Let $X_t = \theta t + W_t$. Then
+        $$
+        \hat\theta_T = \frac{X_T}{T} \to \theta
+        $$
+        as $T \to \infty$.
+    </p>
+    </div>
+
+    <div class="lemma">
+    <div class="theorem-title">Lemma 1.</div>
+    <p>
+        If $\frac{W_T}{T} \to 0$, then the estimator is consistent.
+    </p>
+    </div>
+
+    <div class="proof">
+    <div class="proof-title">Proof.</div>
+    <p>
+        Write
+        $$
+        \hat\theta_T - \theta = \frac{W_T}{T}.
+        $$
+        The claim follows.
+    </p>
+</div> */

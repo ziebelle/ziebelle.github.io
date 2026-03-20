@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RKHS of the stochastic wave equation | Eric Ziebell</title>
+    <meta name="description" content="RKHS of the stochastic wave equation" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="../index.html" aria-label="Go to homepage">
+                <span>Eric Ziebell</span>
+            </a>
+            <nav class="nav-links" aria-label="Main navigation">
+                <a href="../index.html#featured">Featured</a>
+                <a href="../index.html#projects">Projects</a>
+                <a href="index.html">Notes</a>
+                <a href="../index.html#contact">Contact</a>
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">Theme</button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="intro">
+            <div class="container">
+                <div class="intro-card">
+                    <p class="post-meta">March 2026 · Mathematics · Exposition</p>
+                    <h1>RKHS of the stochastic wave equation</h1>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <article class="blog-post">
+                    <h3>RKHS of the harmonic oscillator</h3>
+                    We begin by studying the Fourier modes of the stochastic wave equation, as this will provide
+                    insight into the overall structure of the RKHS associated with the stochastic wave equation.
+                    The solution of the parametric stochastic wave equation on the bounded domain
+                    $\Lambda=(0,\pi)$ with zero initial conditions, driven by space-time white noise, can be
+                    written as a Fourier series
+                    $$
+                    \begin{equation}
+                    \tag{1}
+                    X(t)(x)= \sqrt{\frac{2}{\pi}} \sum_{k=1}^\infty \begin{pmatrix}
+                    u_k(t)\\v_k(t)
+                    \end{pmatrix}\sin(kx),\quad x \in (0,\pi), \quad t \in [0,T].
+                    \end{equation}
+                    $$
+                    In view of [1] the resulting Fourier modes in
+                    (1) follow a bivariate Ornstein-Uhlenbeck dynamic also called harmonic
+                    oscillator
+                    $$
+                    \begin{equation}
+                    \tag{2}
+                    \begin{pmatrix}
+                    \mathrm{d} u_k(t)\\ \mathrm{d}v_k(t)
+                    \end{pmatrix} = \begin{pmatrix}
+                    0 & 1\\
+                    -\vartheta_0 k^{2} & 0
+                    \end{pmatrix} \begin{pmatrix}
+                    u_k(t)\\v_k(t)
+                    \end{pmatrix} + \begin{pmatrix}
+                    0\\ 1
+                    \end{pmatrix}\mathrm{d}w_k(t), \quad u_k(0)=v_k(0)=0, \quad \quad k \in \mathbb{N}.
+                    \end{equation}
+                    $$
+                    Any weak solution to an infinite SDE in the sense of [2] also induces a mild solution, leading to
+                    the following representation for the harmonic oscillator (2):
+                    $$
+                    \begin{align}
+                    \tag{3}
+                    u_k(t)= \frac{1}{\sqrt{\vartheta_0}k}\int_{0}^{t} \sin(\sqrt{\vartheta_0}k
+                    (t-s))\mathrm{d}w_k(s), \quad
+                    v_k(t)= \int_{0}^{t}\cos(\sqrt{\vartheta_0}k(t-s))\mathrm{d}w_k(s).
+                    \end{align}
+                    $$
+                    Consider the first component $(u_k(t), t \in [0,T])$ only. The covariance operator of this
+                    process is given by
+                    $$
+                    \begin{equation}
+                    \tag{4}
+                    \begin{aligned}
+                    &C_{u_k, \vartheta}[f](t) \\
+                    &= \int_{0}^{T}\mathbb{E}[u_k(t)u_k(s)]f(s)\mathrm{d}s\\
+                    &=\int_{0}^{T} \frac{{\color{purple} 2 (t \land s) k
+                    \sqrt{\vartheta_0}\cos(k(t-s)\sqrt{\vartheta_0})} +
+                    \sin(k\sqrt{\vartheta_0}|t-s|){\color{black}- \sin(k\sqrt{\vartheta_0}(t+s))}}{4k^3
+                    \vartheta_0^{3/2}} f(s)\mathrm{d}s.
+                    \end{aligned}
+                    \end{equation}
+                    $$
+                    for $f \in L^{2}([0,T])$ and $t \in [0,T]$. Consider the mapping
+                    $$
+                    \begin{equation}
+                    \tag{5}
+                    \label{eq:symbolic_kernel}
+                    \begin{aligned}
+                    \mathcal{K}_{A}(t,s) &:= \frac{ 2 (t \land s)A\cos((t-s)A) + \sin(|t-s|A)-
+                    \sin((t+s)A)}{4
+                    A}\\
+                    &= \frac{1}{2}(t \land s) \cos((t-s)A) +
+                    \frac{A^{-1}}{4}\Big(\sin(|t-s|A)-\sin((t+s)A)\Big).
+                    \end{aligned}
+                    \end{equation}
+                    $$
+                    The first derivative of (5) is given by
+                    $$
+                    \begin{equation}
+                    \label{eq:first_derivative_symbolic_kernel_non_simplified}
+                    \tag{6}
+                    \begin{aligned}
+                    \partial_{s}\mathcal{K}_{A}(t,s) &= \frac{1}{2}(t \land s)A \sin((t-s)A) +
+                    \frac{1}{2}H(t-s)\cos((t-s)A) \\
+                    &+ \frac{1}{4}\cos(|t-s|A)\mathrm{sign}(s-t)-\frac{1}{4}\cos((t+s)A),
+                    \end{aligned}
+                    \end{equation}
+                    $$
+                    with the Heaviside function $H$ satisfying
+                    $$
+                    \begin{equation}
+                    \tag{7}
+                    \label{eq:heaviside_sign}
+                    2H(t-s)-\mathrm{sign(t-s)}\equiv 1, \quad t,s \in [0,T].
+                    \end{equation}
+                    $$
+                    Using (7) and the symmetry of the cosine, we can simplify
+                    (6) in order to obtain
+                    $$
+                    \begin{equation}
+                    \tag{8}
+                    \label{eq:first_derivative_symbolic_kernel_simplified}
+                    \mathcal{K}_{A}'(t,s) = \frac{1}{2}(t \land s)A \sin((t-s)A) +
+                    \frac{1}{4}\cos((t-s)A)-\frac{1}{4}\cos((t+s)A).
+                    \end{equation}
+                    $$
+                    We may now compute the derivatives of (8), which
+                    are given by
+                    $$
+                    \begin{align}
+                    & \begin{aligned}
+                    \label{eq:derivative_2}
+                    \mathcal{K}_{A}''(t,s) &= \frac{1}{2}H(t-s)A\sin((t-s)A)- \frac{1}{2}(t \land s) A^{2}\cos((t-s)A)
+                    \\
+                    &+ \frac{A}{4}[\sin((t-s)A) + \sin((t+s)A)]
+                    \end{aligned}\\
+                    & \begin{aligned}
+                    \label{eq:derivative_3}
+                    \mathcal{K}_{A}'''(t,s) &=- \frac{1}{2}A^{3}(t \land s) \sin(A(t-s))-
+                    A^{2}\cos(A(t-s))H(t-s)-\frac{1}{2}A \sin(A(t-s))\delta(t-s) \\
+                    &+ \frac{1}{4}[-A^{2}\cos(A(t-s)) + A^{2} \cos(A(t+s))]
+                    \end{aligned}\\
+                    & \begin{aligned}
+                    \mathcal{K}_A''''(t,s) &= \frac{1}{2}A^{4}(t \land s)\cos(A(t-s)) -
+                    \frac{3}{2}A^{3}\sin(A(t-s))H(t-s)\\
+                    &+\frac{3}{2}A^{2}\cos(A(t-s))\delta(t-s)
+                    + \frac{1}{2}A \sin(A(t-s))\delta^{(1)}(t-s)\\&+ \frac{1}{4}[-A^{3}\sin(A(t-s))-A^{3}\sin((t+s)A)].
+                    \end{aligned}
+                    \end{align}
+                    $$
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem 1. (RKHS of the stochastic harmonic oscillator)</div>
+                        <p>
+                            The reproducing kernel Hilbert space associated with the process $(u_k(t), t \in [0,T])$
+                            defined in (3) is given by
+                            \begin{equation}
+                            \label{eq:rkhs_u_k}
+                            H=H_{u_k} = \{h \in L^{2}([0,T])\colon h, h' \in AC([0,T]), h', h'' \in L^{2}([0,T]), h
+                            (0)=h'(0)=0\},
+                            \end{equation}
+                            with respect to the inner product
+                            \begin{align}
+                            \tag{9}
+                            \label{eq:inner_product_H_u_K}
+                            \langle h_1, h_2\rangle_{H_{u_k}}&:=\int_{0}^{T}(\vartheta_0k^2
+                            h_1(t)+h_1''(t))(\vartheta_0k^2h_2(t)+h''_2(t))\mathrm{d}t, \quad h_1, h_2 \in H.
+                            \end{align}
+                        </p>
+                    </div>
+
+                    <div class="proof">
+                        <div class="proof-title">Proof.</div>
+                        <p>
+                            The covariance function of the process $(u_k(t), t \in [0,T])$ is given by
+                            $$
+                            \begin{equation}
+                            \label{eq:kernel}
+                            \begin{aligned}
+                            K_{u_k}(t,s)&:=\mathbb{E}[u_k(t)u_k(s)] = \frac{1}{\vartheta_0 k^2}\int_{0}^{t\land
+                            s}\sin(k\sqrt{\vartheta_0}(t-r))\sin(k\sqrt{\vartheta_0}(s-r))\mathrm{d}r\\
+                            &= \frac{{\color{purple} 2 (t \land s) k \sqrt{\vartheta_0}\cos(k(t-s)\sqrt{\vartheta_0})} +
+                            \sin(k\sqrt{\vartheta_0}|t-s|){\color{black}- \sin(k\sqrt{\vartheta_0}(t+s))}}{4k^3
+                            \vartheta_0^{3/2}}\\
+                            &= \frac{1}{\vartheta_0 k^{2}}\mathcal{K}_{k\sqrt{\vartheta_0}}(t,s),
+                            \end{aligned}
+                            \end{equation}
+                            $$
+                            where $\mathcal{K}$ is defined through (5).
+                            We need to verify that the mapping $K_{u_k}^{t}(s):= K_{u_k}(t,s)$ satisfies $K_{u_k}^{t}
+                            \in
+                            H_{u_k}$. This is clear, because since all the cosine and sine functions are continuous and
+                            bounded
+                            we have $K_{u_k}^{t} \in
+                            L^{2}([0,T])$ and clearly $K_{u_k}^{t}(0)=K_{u_k}(t,0)=0$. In view of the derivatives of
+                            (5)
+                            the derivatives of $K_{u_k}^{t}$ are given
+                            by
+                            $$
+                            \begin{equation}
+                            \label{eq:first_deriv_K_u_k}
+                            \begin{aligned}
+                            (K_{u_k}^{t})'(s)&= \frac{1}{4k^{3}\vartheta_0^{3/2}}\Big( k\sqrt{\vartheta_0}
+                            \big[\cos(k\sqrt{\vartheta_0}(t-s))-\cos(k\sqrt{\vartheta_0} (t+s)) \big] \\
+                            &+2 \vartheta_0 k^2 (t \land s) \sin(k \sqrt{\vartheta_0}(t-s))\Big)\\
+                            (K_{u_k}^{t})''(s)&= \frac{1}{4k^{3}\vartheta_0^{3/2}}\Big(k^2 \vartheta_0
+                            \big[{\color{black}\sin(k
+                            \sqrt{\vartheta_0}(t+s))} + { \sin(k \sqrt{\vartheta_0}(t-s))}\big]\\
+                            &+ 2\vartheta_0 k^2 \sin(k \sqrt{\vartheta_0}(t-s))H(t-s)- {\color{purple}2
+                            \vartheta_0^{3/2}k^3
+                            (t
+                            \land s)\cos(\sqrt{\vartheta_0}k(t-s)) }\Big).
+                            \end{aligned}
+                            \end{equation}
+                            $$
+                            We notice that all functions with distribution valued derivatives have cancelled out and
+                            $(K_{u_k}^{t})' \in L^{2}([0,T])$ with $(K_{u_k}^{t})'(0)=0$. The second derivative is also
+                            an
+                            $L^{2}([0,T])$-function. Similar to (7) we use the fact that $1 +2
+                            H(t-s)+\mathrm{sign}(t-s)=4H(t-s)$ and we observe
+                            $$
+                            \begin{equation}
+                            \label{eq:nice_sum}
+                            \begin{aligned}
+                            \vartheta_0 k^{2}K_{u_k}^{t}(s)+ (K_{u_k}^{t})''(s)&=
+                            \frac{1}{4k^{3}\vartheta_0^{3/2}}\big(4k^2
+                            \vartheta_0H(t-s) \sin(k \sqrt{\vartheta_0}(t-s))\big)\\
+                            &= \frac{1}{k\sqrt{\vartheta_0}}H(t-s)\sin(k \sqrt{\vartheta_0}(t-s)).
+                            \end{aligned}
+                            \end{equation}
+                            $$
+                            This expression allows us to check the reproducing property of the kernel and we compute
+                            $$
+                            \begin{equation}
+                            \label{eq:plugin_reproducing_property}
+                            \begin{aligned}
+                            &\langle h, K_{u_k}^{t}(\cdot)\rangle_{H_{u_k}}\\ &= \int_{0}^{T}(\vartheta_0k^{2}h
+                            (s)+h''(s))\frac{1}{k\sqrt{\vartheta_0}}H(t-s)\sin(k \sqrt{\vartheta_0}(t-s))\mathrm{d}s\\
+                            &= \sqrt{\vartheta_0}k\int_{0}^{t} h (s)\sin(k \sqrt{\vartheta_0}(t-s))\mathrm{d}s +
+                            \frac{1}{k\sqrt{\vartheta_0}}\int_{0}^{t}h''(s)\sin(k \sqrt{\vartheta_0}(t-s))\mathrm{d}s.
+                            \end{aligned}
+                            \end{equation}
+                            $$
+                            By partially integrating twice, we obtain for the second summand in the latter expression
+                            $$
+                            \begin{equation}
+                            \label{eq:partial_integration}
+                            \begin{aligned}
+                            &\int_{0}^{t}h''(s)\sin(k \sqrt{\vartheta_0}(t-s))\mathrm{d}s\\ &= [ h'(s)\sin(k
+                            \sqrt{\vartheta_0}(t-s))]^{t}_0 + k\sqrt{\vartheta_0}\int_{0}^{t}h'(s)\cos(k
+                            \sqrt{\vartheta_0}(t-s))\mathrm{d}s\\
+                            &=[h'(s)\sin(k \sqrt{\vartheta_0}(t-s))]^{t}_0 + k\sqrt{\vartheta_0}[h (s)
+                            \cos(k\sqrt{\vartheta_0}(t-s))]_0^{t} \\
+                            &- k^{2}\vartheta_0 \int_{0}^{t}h (s)\sin(k\sqrt{\vartheta_0}(t-s))\mathrm{d}s
+                            \end{aligned}
+                            \end{equation}
+                            $$
+                            Resubstituting back yields
+                            $$
+                            \begin{equation}
+                            \begin{aligned}
+                            \langle h, K_{u_k}^{t}(\cdot)\rangle_{H_{u_k}} &= \frac{1}{k\sqrt{\vartheta_0}}
+                            [h'(s)\sin(k\sqrt{\vartheta_0}(t-s))]_0^{t} + [h (s) \cos(k \sqrt{\vartheta_0}
+                            (t-s))]_0^{t}\\
+                            &=h(t)-\frac{1}{k\sqrt{\vartheta_0}}h'(0)\sin(k\sqrt{\vartheta_0}(t))- h (0)\cos(k
+                            \sqrt{\vartheta_0}t)\\
+                            &= h (t),
+                            \end{aligned}
+                            \end{equation}
+                            $$
+                            where we have used that $h'(0)= h(0)=0$ since $h \in H_{u_k}$.</p>
+                        <p>
+                            The mapping (9) is bilinear
+                            \begin{equation}
+                            \begin{aligned}
+                            &\langle \alpha h_0 + h_1, h_2\rangle_{H_{u_k}}\\&=\int_{0}^{T}(\vartheta_0k^{2}(\alpha
+                            h_0(t) + h_1(t)) + \alpha h_0''(t) + h_1''(t))(\vartheta k^{2}h_2(t)+ h''_2(t))\mathrm{d}t\\
+                            &= \int_{0}^{T} (\alpha(\vartheta_0k^{2}h_0(t)+h_0''(t))+ \vartheta_0
+                            k^{2}h_1(t)+h_1''(t))(\vartheta k^{2}h_2(t) + h''_2(t))\mathrm{d}t\\
+                            &= \alpha \langle h_0, h_2\rangle_{H_{u_k}} + \langle h_1, h_2\rangle_{H_{u_k}},
+                            \end{aligned}
+                            \end{equation}
+                            and also symmetric by the symmetry of the $L^{2}([0,T])$-inner product, as
+                            \begin{equation}
+                            \langle h_1, h_2\rangle_{H_{u_k}}=\langle \vartheta_0 k^{2}h_1+h_1'', \vartheta_0
+                            k^{2}h_2+h_2''\rangle_{L^{2}([0,T])}.
+                            \end{equation}
+                            Suppose that $\vartheta_0k^{2}h + h''$ for $h \in H_{u_k}$ is not identical to zero.
+                            Then, by the positive-definiteness of the $L^{2}([0,T])$-inner product we also have $\langle
+                            h, h\rangle_{H_{u_k}}>0$. Suppose now that $h
+                            \in H_{u_k}$ satisfies
+                            \begin{equation}
+                            \vartheta_0k^{2}h + h'' \equiv 0.
+                            \end{equation}
+                            This expression is the undamped linear harmonic oscillator, which is solved by functions of
+                            the form
+                            \begin{equation}
+                            \label{eq:base_functions}
+                            \begin{aligned}
+                            h (t)= a_1\cos(k \sqrt{\vartheta_0}t) + b_1\sin(k \sqrt{\vartheta_0}t).
+                            \end{aligned}
+                            \end{equation}
+                            for arbitrary constants $a_1, b_1 \in \mathbb{R}$. Clearly, we have $h (0)= a_1$ and
+                            $h'(0)=bk \sqrt{\vartheta_0}$. Thus, the only (such) function of this form
+                            in $H_{u_k}$ is identical to zero. The positive-definiteness now follows from the
+                            positive-definiteness of the $L^{2}([0,T])$-inner product.
+                        </p>
+                        <p>
+                            We have shown that $(H_{u_k}, \langle \cdot, \cdot\rangle_{H_{u_k}})$ is a reproducing
+                            kernel space. It is also clear that $C_c^{\infty}((0,T)) \subset H_{u_k}$. Therefore, as
+                            $C_c^{\infty}((0,T))$ is a dense subset of $L^{2}([0,T])$ with respect to the $L^{2}$-norm
+                            we can conclude that
+                            $H^{u_k}$ is dense in $L^{2}([0,T])$ as well. Let $C_{u_k}$ be the covariance operator
+                            associated with $(u_k(t), t \in [0,T])$ on $L^{2}([0,T])$. Then, as computed in the first
+                            step, we have $\Vert h \Vert_{H_{u_k}} = \Vert C_{u_k}^{-1/2}h \Vert_{L^{2}([0,T])}$ for $h
+                            \in H_{u_k}=\mathcal{R}(C_{u_k}^{1/2})$. Thus, we know that $\mathcal{R}(C_{u_k}^{1/2})$ is
+                            a dense subset of $L^{2}([0,T])$. This in turn implies that
+                            $\mathrm{ker}(C_{u_k}^{1/2})=\{0\}$. The completeness follows immediately using Proposition
+                            C.0.3 in [3].
+                        </p>
+
+
+                        <p class="qed-line"><span class="qed-symbol">∎</span></p>
+                    </div>
+                    <h3>RKHS of the stochastic wave equation</h3>
+                    The first component of the stochastic wave equation can also be written as
+                    $$
+                    \begin{equation}
+                    \label{eq:stochastic_convolution}
+                    u(t)= \int_{0}^{t}S_{\vartheta}(t-s)\mathrm{d}W(s)=
+                    \int_{0}^{t} (-\vartheta \Delta)^{-1/2}\sin((t-s)(-\vartheta \Delta)^{1/2})\mathrm{d}W(s) , \quad t
+                    \in [0,T],
+                    \end{equation}
+                    $$
+                    using the representation
+                    \begin{equation}
+                    \label{eq:operator_sine_to_sine_operator}
+                    S_{\vartheta}(t)= (-\vartheta \Delta)^{-1/2}\sin((t-s)(-\vartheta \Delta)^{1/2}), \quad t \in [0,T].
+                    \end{equation}
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem 1. (RKHS associated with $u$)</div>
+                        <p>
+                            Let $(H_{u}, \langle \cdot, \cdot\rangle_{H_{u}})$ be the reproducing kernel Hilbert space
+                            associated with $(u(t), t \in [0,T])$. It is given by the set of functions
+                            \begin{equation}
+                            \label{eq:base_space_RKHS_SPDE}
+                            \begin{aligned}
+                            H_{u}= \Big\{h \in L^{2}([0,T], D(\Delta)) \colon h, h' \in &\mathrm{AC}([0,T],
+                            L^{2}(\Lambda)),
+                            \\
+                            \Delta h, h', h'' \in &L^{2}([0,T], L^{2}(\Lambda)), h (0)=0, h'(0)=0\Big\}
+                            \end{aligned}
+                            \end{equation}
+                            with the inner product
+                            \begin{equation}
+                            \label{eq:inner_product_infinte_dim}
+                            \langle h, g\rangle_{H_u} := \int_{0}^{T}\langle (-\vartheta \Delta h) (t) + h''(t),
+                            (-\vartheta \Delta g)(t) + g''(t)\rangle_{L^{2}(\Lambda)} \mathrm{d}t.
+                            \end{equation}
+                        </p>
+                    </div>
+
+                    <div class="proof">
+                        <div class="proof-title">Proof.</div>
+                        <p>
+                            The proof for the stochastic wave equation is similar to the case of the harmonic
+                            oscillator. Using Proposition 4.28 in [2], we
+                            can compute
+                            the correlation operator associated with the process $(u(t), t \in [0,T])$ which is given by
+                            \begin{equation}
+                            \label{eq:correlation_operator_u}
+                            \begin{aligned}
+                            K_{u}(t,s) &:=\int_{0}^{t \land s} S_{\vartheta}(t-r) S_{\vartheta}(s-r) \mathrm{d}r
+                            \\
+                            &= (-\vartheta \Delta)^{-1}\int_{0}^{t \land s} \sin((t-r)(-\vartheta \Delta)^{1/2})
+                            \sin((s-r)(-\vartheta_0 \Delta)^{1/2}) \mathrm{d}r,
+                            \end{aligned}
+                            \end{equation}
+                            where we have used that $(-\vartheta \Delta)$ and its fractional powers commute with all
+                            trigonometric operator families associated with $(-\vartheta \Delta)$, see for example
+                            Proposition B.7 and Proposition 3.15 in [4]. In view of Proposition 3.14.5 (f) in [4], the
+                            product-to-sum formula still holds for operator cosine and sine functions, yielding:
+                            \begin{equation}
+                            \label{eq:K_u}
+                            \begin{aligned}
+                            K_{u}(t,s) &= \frac{(-\vartheta \Delta)^{-3/2}}{4}\Big( \sin(|t-s|(-\vartheta
+                            \Delta)^{1/2})- \sin((t+s)(-\vartheta \Delta)^{1/2}) \\
+                            &+ 2 (t \land s) (-\vartheta \Delta)^{1/2} \cos((t-s)(-\vartheta \Delta)^{1/2})\Big)\\
+                            &= \frac{(-\vartheta \Delta)^{-3/2}}{4}\Big( \sin(|t-s|(-\vartheta \Delta)^{1/2})-
+                            \sin((t+s)(-\vartheta \Delta)^{1/2})\Big)\\
+                            &+ (t \land s) \frac{(-\vartheta \Delta)^{-1}}{2} \cos((t-s)(-\vartheta \Delta)^{1/2})\\
+                            &= (-\vartheta \Delta)^{-1}\mathcal{K}_{(-\vartheta \Delta)^{1/2}}(t,s).
+                            \end{aligned}
+                            \end{equation}
+                            Now, we would like to verify that for some function $q \in D(\Delta)$, we have $K_{u}(t,
+                            \cdot)q \in H_{u}$. As $q \in D(\Delta)$, Theorem 3.4.11 in
+                            [4] or Section 2 in [5] reveal that the mappings
+                            $\sin(\cdot (-\vartheta\Delta)^{1/2})q$, $\cos(\cdot (-\vartheta\Delta)^{1/2})q$ are
+                            differentiable in time and satisfy
+                            \begin{equation}
+                            \label{eq:derivative_properties}
+                            \begin{aligned}
+                            \partial_t \sin(\cdot (-\vartheta \Delta)^{1/2})q &= (-\vartheta \Delta)^{1/2}\cos(\cdot
+                            (-\vartheta \Delta)^{1/2})q,\\
+                            \partial_t \cos(\cdot (-\vartheta \Delta)^{1/2})q &= (-\vartheta \Delta)^{1/2}\sin(\cdot
+                            (-\vartheta \Delta)^{1/2})q,\\
+                            \partial_t S_{\vartheta}(t)q &= C_{\vartheta}(t)q = \cos(\cdot (-\vartheta \Delta)^{1/2})q
+                            \end{aligned}
+                            \end{equation}
+                            It is clear that the Laplace operator $-\vartheta\Delta$ commutes with $\partial_t$ by the
+                            equality of mixed partial derivatives. Since $\sin(t (-\vartheta \Delta)^{1/2})q \in
+                            D(\Delta)$ and $\cos(t (-\vartheta \Delta)^{1/2})q \in D(\Delta)$ for any $t \in [0,T]$, we
+                            also observe that $\Delta^{-1}$ commutes with $\partial_t$. Thus, applying
+                            symbolic derivations from the beginning yields:
+                            \begin{equation}
+                            \begin{aligned}
+                            (K_{u}(t, \cdot)q)'(s) &= \Big( \frac{(-\vartheta \Delta)^{-1}}{4}
+                            \big[\cos((t-s)(-\vartheta \Delta)^{1/2})-\cos( (t+s)(-\vartheta \Delta)^{1/2}) \big]q \\
+                            &+2 (t \land s) (-\vartheta \Delta)^{-1/2} \sin((t-s)(-\vartheta \Delta)^{1/2})q\Big)\\
+                            (K_{u}(t,\cdot)q)''(s)&= \frac{(-\vartheta\Delta)^{-1/2}}{4}\Big[\sin((t+s)(-\vartheta
+                            \Delta)^{1/2})+ \sin((t-s)(-\vartheta \Delta)^{1/2})\Big]q\\
+                            &+ H(t-s)\frac{(-\vartheta \Delta)^{-1/2}}{2} \sin((t-s)(-\vartheta \Delta)^{1/2})q\\&-
+                            \frac{1}{2}(t \land s) \cos((t-s)(-\vartheta \Delta)^{1/2})q.
+                            \end{aligned}
+                            \end{equation}
+                            We may also compute the sum
+                            \begin{equation}
+                            \label{eq:nice_form_2}
+                            \begin{aligned}
+                            (-\vartheta \Delta) K_{u}(t,s)q + (K_{u}(t,\cdot)q)''(s) &= H(t-s)(-\vartheta
+                            \Delta)^{-1/2}\sin((t-s)(-\vartheta \Delta)^{1/2})\\
+                            &= H(t-s)S_{\vartheta}(t-s)q.
+                            \end{aligned}
+                            \end{equation}
+                            Lemma 5 in [5] provides the required
+                            partial integration properties to proceed, and for some $f \in H_{u}$, we observe
+                            \begin{equation}
+                            \label{eq:partial_integration_property_bochner}
+                            \begin{aligned}
+                            &\int_{0}^{T}H(t-s)S_{\vartheta}(t-s)f''(s)\mathrm{d}s= \int_{0}^{t}(-\vartheta
+                            \Delta)^{-1/2}\sin((t-s)(-\vartheta \Delta)^{1/2})f''(s)\mathrm{d}s\\
+                            &= (-\vartheta \Delta)^{-1/2}[ \sin ((t-s) (-\vartheta \Delta)^{1/2})f'(s)]_0^{t} \\
+                            &+ (-\vartheta \Delta)^{-1/2}(-\vartheta \Delta)^{1/2} [\cos((t-s)(-\vartheta
+                            \Delta)^{1/2})f(s) ]_0^{t} \\
+                            &- \int_{0}^{t}(-\Delta \vartheta)^{-1/2}\sin((t-s)(-\vartheta
+                            \Delta)^{1/2})f(s)\mathrm{d}s.
+                            \end{aligned}
+                            \end{equation}
+                            Finally, with the self-adjointness of we the operator sine we obtain the reproducing
+                            property:
+                            \begin{equation}
+                            \begin{aligned}
+                            &\langle f, K_{u}(t, \cdot)q\rangle_{H_{u}} \\&= \int_{0}^{T}\langle (-\vartheta\Delta)f(s)
+                            + f''(s), H(t-s)S_{\vartheta}(t-s)q\rangle_{L^{2}(\Lambda)}\mathrm{d}s\\
+                            &=\Big\langle \int_{0}^{t}S_{\vartheta}(t-s)((-\vartheta\Delta)f(s) + f''(s)),
+                            q\Big\rangle_{L^{2}(\Lambda)}\\
+                            &= \langle f(t)-(-\vartheta\Delta)^{-1/2}\sin(t (-\vartheta \Delta)^{1/2})f'(0)+
+                            \cos((t-s)(-\vartheta \Delta)^{1/2})f(0), q\rangle_{L^{2}(\Lambda)}\\
+                            &= \langle f(t),q \rangle_{L^{2}(\Lambda)},
+                            \end{aligned}
+                            \end{equation}
+                            where the remaining terms vanish due to the boundary conditions $f(0)=f'(0)\equiv 0 \in
+                            L^{2}(\Lambda)$.
+                        </p>
+                        <p>
+                            For the positive-definiteness, it suffices
+                            to check the case
+                            $$
+                            \begin{equation}
+                            \label{eq:second_order_ACP}
+                            -\vartheta \Delta f + f'' \equiv 0, \quad f \in H_{u}.
+                            \end{equation}
+                            $$
+                            By Theorem 3.14.11 and Corollary 3.14.12 in [4]
+                            we know that any classical solution of the second order abstract Cauchy problem is of the
+                            form
+                            $$
+                            \begin{equation}
+                            \tag{ACP2}
+                            \label{eq:classical_sol_ACP2}
+                            f(t) = C_{\vartheta}(t)x + S_{\vartheta}(t)y
+                            \end{equation}
+                            $$
+                            for $x \in D(\Delta)$ and $y \in H_0^{1}(\Lambda)$. Consequently, we have $f(0)\equiv x \in
+                            L^{2}(\Lambda)$ and $f'(0) \equiv y \in L^{2}(\Lambda)$. As we require $f(0)=f'(0)\equiv 0
+                            \in L^{2}(\Lambda)$ the only function of the form (ACP2) in $H_u$ is
+                            $f(t)=C_{\vartheta}(t)0+S_{\vartheta}(t)0 = 0$ for any $t \in [0,T]$. Now the
+                            positive-definiteness follows from the
+                            positive-definiteness of the $L^{2}([0,T], L^{2}(\Lambda))$-inner product.
+                        </p>
+                        <p>
+                            we observe that $C_c^{\infty}((0,T), D(\Delta))$ is a subset of $H_{u}$ which is itself
+                            dense in $L^{2}([0,T],L^{2}(\Lambda))$. Thus, $H_{u}
+                            =\mathcal{R}((C_{\vartheta}^{u})^{1/2})$ is dense in $L^{2}([0,T])$ and the completeness
+                            follows by Proposition C.0.3 in [3].
+                        </p>
+                    </div>
+
+
+                    <h1>References</h1>
+                    <p>
+                        [1] Liu, W., and S. V. Lototsky. "Estimating speed and damping in the stochastic wave
+                        equation."
+                        arXiv preprint arXiv:0810.0046 (2008).
+
+
+                    </p>
+                    <p>
+                        [2] Da Prato, Giuseppe, and Jerzy Zabczyk. Stochastic equations in infinite dimensions.
+                        Cambridge university press, 2014.
+                    </p>
+                    <p>
+                        [3] Liu, Wei, and Michael Röckner. Stochastic partial differential equations: an
+                        introduction.
+                        Vol. 10. Cham: Springer, 2015.
+                    </p>
+                    <p>
+                        [4] Arendt, Wolfgang, et al. "Cauchy problems." Vector-valued Laplace Transforms and Cauchy
+                        Problems. Basel: Springer Basel, 2001. 109-240.
+                    </p>
+                    <p>
+                        [5] Pandolfi, Luciano. "The controllability of the Gurtin-Pipkin equation: a cosine operator
+                        approach." Applied Mathematics and Optimization 52.2 (2005): 143-165.
+                    </p>
+
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <script src="../assets/js/site.js"></script>
+</body>
+
+</html>
